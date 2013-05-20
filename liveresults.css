@@ -1,30 +1,41 @@
-/* CSS declarations go here */
+/** liveresults - CNCCB
+*    main CSS
+*/
+
+@font-face 
+{
+        font-family: "ubuntu-regular";
+        src: url("Ubuntu-R.ttf");
+}
+.hello{
+	font-family: ubuntu-regular, arial;
+	margin: 60px 0;
+	text-align: center;
+}
+#tableau{
+	margin-right: 30px;
+	margin-left: 30px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	-moz-border-radius : 3px;
+}
+#tableau .span2{ margin-left: -15px; border-left: 1px solid #ddd}
+#tableau .span2 h3{padding-left: 5px}
+#tours{ margin-left: 20px; margin-top: 20px}
+#info{ margin: 20px -10px; }
 .tireur{
 	border-bottom: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+	/*border-left: 1px solid #ddd;*/
 	margin-bottom: -1px;
-	padding-left: 10px;
+	padding-left: 20px;
 	vertical-align: middle;
 	font: arial 14px/20px;
 }
-.finale div.tireur{
-	height: 240px;
-}
-.demi div.tireur{
-	height: 120px;
-}
-.quarts div.tireur{
-	height: 60px;
-}
-.huitieme div.tireur
-{
-	height: 30px;
-}
-.seizieme div.tireur
-{
-	height: 15px;
-}
+.vainqueur div.tireur{ height: 480px; line-height: 480px; }
+.finale div.tireur   { height: 240px; line-height: 240px; }
+.demi div.tireur     { height: 120px; line-height: 120px; }
+.quarts div.tireur   { height:  60px; line-height:  60px; }
+.huitieme div.tireur { height:  30px; line-height:  30px; }
+.seizieme div.tireur { height:  15px; line-height:  15px; }
 
-#tableau .span3{
-	width: 20%;
-}

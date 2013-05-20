@@ -3,36 +3,43 @@ Tours = new Meteor.Collection('tours');
 //Tours = new Meteor.Collection('tourFem');
 
 if (Meteor.isClient) {
-  Template.resultats.competition = function () {
-    return "Internationaux 2013 - Saint-Martin-le-Beau";
-  };
-  Template.resultats.maj = function () {
-    return "19/05/2013 - 16h25";
-  };
-
-
-  Template.resultats.tour =  function(){
-    if(Session.get('categorie')==='undefined')
-    {
-      Session.set('categorie','M');
-    }
-    return Tours.find({categorie: Session.get('categorie')}).fetch();
-  };
-  Template.resultats.render();
+    Template.resultats.competition = function () {
+      return "Internationaux 2013 - Saint-Martin-le-Beau";
+    };
+    Template.resultats.maj = function () {
+      return "19/05/2013 - 16h25";
+    };
+    Template.resultats.tour =  function() {
+      if(Session.get('categorie')==='undefined')
+      {
+        Session.set('categorie','M');
+      }
+      return Tours.find({categorie: Session.get('categorie')}).fetch();
+    };
+    Meteor.startup(function () {
+        Session.set('categorie','M');
+  });
+ // Template.resultats.render();
 
   Template.resultats.events({
-    'click #masc' : function(){
+    'click #masc' : function(e){
       Session.set('categorie','M'); 
+    },
+    'click #fem' : function(e){
+      Session.set('categorie', 'F');
     }
-  });
+  }); //template.resultats.events
 
-  Template.resultats.events({
-    'click #fem' : function(){
-       Session.set('categorie', 'F');
-    }
-  });
- 
-}
+  Template.resultats.rendered = function(){
+    //FIXME do it with native checkbox bootstap code
+      var $button = (Session.get('categorie')==='M') ? $("#masc") : $("#fem");
+      $('button').removeClass('active');
+      $button.addClass('active');
+    };
+}// isClient
+
+
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -109,12 +116,12 @@ if (Meteor.isServer) {
               {name: 'B. Latt'}
             ]
           });  
-    //finale
+    //vainqueur
     Tours.insert(
           { name: "vainqueur",
             categorie: 'M',
             serie: '1',
-            className: "finale",
+            className: "vainqueur",
             tireurs : [
               {name: 'B. Latt'}
             ]
@@ -138,6 +145,7 @@ if (Meteor.isServer) {
               {name: ''}, 
               {name: ''},
               {name: ''}, 
+              {name: ''},
               {name: ''},
               {name: ''},
               {name: ''},
@@ -194,7 +202,7 @@ if (Meteor.isServer) {
           { name: "vainqueur",
             categorie: 'F',
             serie: '1',
-            className: "finale",
+            className: "vainqueur",
             tireurs : [
               {name: 'J. Primc'}
             ]

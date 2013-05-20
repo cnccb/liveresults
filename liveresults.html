@@ -8,32 +8,40 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 </head>
 <body>
-<div class="well">
-	<h1>CNCCB - résulats en direct</h1>
-	Cette application est actuellement en test, merci de nous excuser des erreurs éventuelles; les résultats sont donnés à titre indicatifs et seront confirmés par les organismes officiels. 
-</div>
-<div class="span8" id="tableau">{{> resultats}}
+	<div class="row hello">
+		<div class="span2">
+			<img src="logo.png" style="height:200px"/>
+		</div>
+		<div class="span8 well ">
+			<h1>CNCCB - résulats en direct</h1>
+			<p class='mutted'> Bienvenue sur l'application des résultats en direct des compétitions CNCCB.</p>
+			<p>Cette application est actuellement en test, merci de nous excuser des erreurs éventuelles; les résultats sont donnés à titre indicatifs et seront confirmés par les organismes officiels. </p>
+		</div>
+	</div>
+<div id="tableau">
+	{{> resultats}}
 </div>
 
 </body>
 
 <template name="resultats">
-	<div class="btn-group">
-		<button id="masc" class='btn'>Masculins</button>
-		<button id="fem" class='btn'>Féminins</button>
-	</div>
 	<h2>{{competition}}</h2>
-	<div class="row-fluid">
+	<div class="btn-group" data-toggle="buttons-radio">
+		<button type="button" id="masc" class='btn'>Masculins</button>
+		<button type="button" id="fem" class='btn'>Féminins</button>
+	</div>
+	
+	<div  class="row" id='tours'>
 		{{#each tour}}
-	<div class="span3 {{className}}">
-		<h3>{{name}}</h3>
-		{{#each tireurs}}
-			{{> tireur}}
+		<div class="span2 {{className}}">
+			<h3>{{name}}</h3>
+			{{#each tireurs}}
+				{{> tireur}}
+			{{/each}}
+		</div>
 		{{/each}}
 	</div>
-		{{/each}}
-	</div>
-	<p class='well small'>Dernière mise à jour : {{maj}}</small>
+	<p class='well small span8' id="info">Dernière mise à jour : {{maj}}</p>
 </template>
 
 <template name="tireur">
