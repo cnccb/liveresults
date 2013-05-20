@@ -1,0 +1,43 @@
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>CNCCB résultats - résultats en direct</title>
+    <meta name="description" content="cnccb résultats en direct" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+</head>
+<body>
+<div class="well">
+	<h1>CNCCB - résulats en direct</h1>
+	Cette application est actuellement en test, merci de nous excuser des erreurs éventuelles; les résultats sont donnés à titre indicatifs et seront confirmés par les organismes officiels. 
+</div>
+<div class="span8" id="tableau">{{> resultats}}
+</div>
+
+</body>
+
+<template name="resultats">
+	<div class="btn-group">
+		<button id="masc" class='btn'>Masculins</button>
+		<button id="fem" class='btn'>Féminins</button>
+	</div>
+	<h2>{{competition}}</h2>
+	<div class="row-fluid">
+		{{#each tour}}
+	<div class="span3 {{className}}">
+		<h3>{{name}}</h3>
+		{{#each tireurs}}
+			{{> tireur}}
+		{{/each}}
+	</div>
+		{{/each}}
+	</div>
+	<p class='well small'>Dernière mise à jour : {{maj}}</small>
+</template>
+
+<template name="tireur">
+		<div class="tireur">
+			{{name}}
+		</div>
+</template>

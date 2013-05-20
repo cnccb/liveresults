@@ -1,0 +1,30 @@
+/* CSS declarations go here */
+.tireur{
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	margin-bottom: -1px;
+	padding-left: 10px;
+	vertical-align: middle;
+	font: arial 14px/20px;
+}
+.finale div.tireur{
+	height: 240px;
+}
+.demi div.tireur{
+	height: 120px;
+}
+.quarts div.tireur{
+	height: 60px;
+}
+.huitieme div.tireur
+{
+	height: 30px;
+}
+.seizieme div.tireur
+{
+	height: 15px;
+}
+
+#tableau .span3{
+	width: 20%;
+}
